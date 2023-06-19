@@ -1,0 +1,36 @@
+@{
+    ViewBag.Title = "Admin Controls";
+
+}
+<h1 class="CenterElement">Admin Panel</h1>
+<div class="container">
+    @* <div class="panel-group" id="accordin">
+    <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordin" href="#collapseAdd">
+    <h2 class="panel-title">
+    <a><span class="glyphicon glyphicon-list"></span>Add </a>
+    </h2>
+    </div>
+    <div id="collapseAdd" class="panel-collapse collapse in">
+    <div class="panel-body">
+    <a onclick="location.href="@Url.Action("")
+    </div>
+    </div>
+    </div> *@
+    <script>
+
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.ge
+            tElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+</div>

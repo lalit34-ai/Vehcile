@@ -1,0 +1,73 @@
+@model VEHCILE.Models.Bike;
+
+@{
+    ViewBag.Title = "Update Bike Details";
+    @* Layout = "~/Views/Shared/_Layout.cshtml"; *@
+}
+
+@* <h2>EditStudent</h2>
+
+@using (Html.BeginForm("ModifyBike", "Bike", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Bike Details</legend>
+
+        @Html.HiddenFor(model => model.BikeID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BikeNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BikeNumber)
+            @Html.ValidationMessageFor(model => model.BikeNumber)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div> *@
+@*
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval") } *@
+
+
+<div class="text-white" align="center" style="background-color: rgba(40, 39, 39, 0.8);">
+    <h1>Edit Bike Details</h1>
+    <hr/>
+<form method="post">
+    <div class="form-group">
+    
+    <label class="form-label" asp-for="BikeNumber"> BikeNumber : 
+      <input size="20" readonly asp-for="BikeNumber" class="form-control" />
+    </label>
+  </div>
+   
+  <div class="form-group">
+    
+    <label class="form-label" asp-for="PickUp">PickUp:
+      <input size="20" asp-for="PickUp" class="form-control" />
+    </label>
+  </div>
+   <div class="form-outline mb-4">
+    <label class="form-label" asp-for="DropOff">DropOff: 
+    <input size="20" asp-for="DropOff" class="form-control" />
+          </label>
+  </div>
+
+  <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Update</button>
+</form>

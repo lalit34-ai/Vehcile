@@ -1,0 +1,18 @@
+<section class="side-bar">
+    <div class="close-side-bar">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="profile">
+        <h1 class="name">@ViewBag.name</h1>
+        <span class="role">Requests</span>
+        <a class="option-btn">View profile</a>
+    </div>
+
+    <div class="menu">
+        <a asp-action="Create" asp-controller="Home"><i clas="fas fa-home"></i><span>New Entries</span></a>
+        <a asp-action="IndexAdmin" asp-controller="Home"><i clas="fas fa-home"></i><span>New Entries</span></a>
+        <a asp-action="InsideAdmin" asp-controller="Home"><i clas="fas fa-home"></i><span>New Entries</span></a>
+        <a asp-action="Request" asp-controller="Home"><i clas="fas fa-home"></i><span>New Entries</span></a>
+
+    </div>
+</section>

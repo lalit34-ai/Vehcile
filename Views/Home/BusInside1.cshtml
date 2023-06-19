@@ -1,0 +1,210 @@
+@* @model IEnumerable<Bus> *@
+@using System.Data;
+@model DataTable;
+
+@* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+@* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<body
+  background="https://th.bing.com/th/id/R.2e5fec55de2d024a9b194f0d088d0b64?rik=7PUvnAxQjURDwQ&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f8%2fb%2f0%2f536126.jpg&ehk=HpaanxOTCj7KhJJ%2feQXiY36OFn%2bHk5cypphJCBpsDIc%3d&risl=&pid=ImgRaw&r=0">
+  <div class="main-container">
+
+    <div class="middle">
+      <h1 style="color:white;">
+        Bus List
+      </h1>
+      <br>
+
+    </div>
+    <div class="store-table">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="color: white;">BusId</th>
+            <th scope="col" style="color:white; ">BusNumber</th>
+            <th scope="col" style="color: whitesmoke;">Book</th>
+            <
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (DataRow dataRow in Model.Rows)
+          {
+            <tr>
+              <th scope="row" style="color: white;">@dataRow[0]</th>
+              <td style="color: white;">@dataRow[1]</td>
+              <td></td>
+              <td><button><a href="/Home/BusSeat">Book</a></button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+</body> *@
+
+
+@* 
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<body
+  background="https://th.bing.com/th/id/R.91145d77ca3c214857f2cec4737d9669?rik=4Ej7vNriH5rcbw&riu=http%3a%2f%2fhdqwalls.com%2fdownload%2f1%2fsunlight-circle-light-color-rays-rainbow-db-3840x2400.jpg&ehk=hJIV7qSq62NNgfmjZObRFut0ncQNps8CGHzeXJ57R2o%3d&risl=&pid=ImgRaw&r=0">
+  <div class="main-container">
+    @* <div class="top">
+    <h3>Buses Available</h3>
+    <a asp-controller="Home" asp-action="Buyproduct"><button type="button"> Add Bus</button> </a>
+    <a asp-controller="Home" asp-action="Sellerdetails"><button type="button"> Buses Details</button> </a>
+    </div> *@
+    @* <h3>Buses Available</h3> *@
+    <div class="middle">
+      <h1 style="color:white;">
+        Booked Seats
+      </h1>
+      <br>
+
+    </div>
+    <div class="store-table">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            @* <th scope="col" style="color: white;">PickUp</th>
+            <th scope="col" style="color: white;">Destination</th> *@
+            <th scope="col" style="color:white; ">BusNumber</th>
+            <th scope="col" style="color:white;">BusID</th>
+          </tr>
+        </thead>
+        <tbody>
+          try{
+             @foreach (DataRow dataRow in Model.Rows)
+          {
+            <tr>
+              <th scope="row" style="color: white;">@dataRow[0]</th>
+              <td style="color: white;">@dataRow[1]</td>
+              @* <td style="color:white;">@dataRow[3]</td>
+              <td style="color:white;">@dataRow[4].ToString().Substring(0,10)</td>
+               *@
+              <td></td>
+              <td><button type="Submit" asp-controller="Home" asp-action="BusSeat">Book</button></td>
+            </tr>
+          }
+          }
+          catch(Exception e){
+            
+          }
+        </tbody>
+      </table>
+    </div>
+</body>
+
+@* <style>
+    @@importurl('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+    }
+
+    /* Toggle Styles */
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+
+    /* Sidebar Styles */
+
+    #sidebar {
+        z-index: 1000;
+        position: fixed;
+        left: 250px;
+        width: 250px;
+        height: 100%;
+        margin-left: -250px;
+        overflow-y: auto;
+        background: #37474F;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #sidebar header {
+        background-color: #263238;
+        font-size: 20px;
+        line-height: 52px;
+        text-align: center;
+    }
+
+    #sidebar header a {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+    }
+
+    #sidebar header a:hover {
+        color: #fff;
+    }
+
+    #sidebar .nav {}
+
+    #sidebar .nav a {
+        background: none;
+        border-bottom: 1px solid #455A64;
+        color: #CFD8DC;
+        font-size: 14px;
+        padding: 16px 24px;
+    }
+
+    #sidebar .nav a:hover {
+        background: #263238;
+        color: #ECEFF1;
+    }
+
+    #sidebar .nav a i {
+        margin-right: 16px;
+    }
+
+    li.logout {
+        padding-top: 250px;
+        pointer-events: none;
+    }
+
+    .button {
+        width: 140px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: white;
+        background-color: black;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .button:hover {
+        background-color: #2EE59D;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #000;
+        transform: translateY(-7px);
+    }
+
+    div.deleteButton {
+        padding-left: 390px;
+    }
+
+</style> *@

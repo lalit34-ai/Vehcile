@@ -1,0 +1,39 @@
+@model LoginEmployee
+@{
+ViewData[" Title"]="Signup";
+}
+
+
+<body
+background="https://memberclicks.com/wp-content/uploads/2021/12/welcome_new_members-scaled.jpg">
+
+  <div style="padding-left:480px;">
+  <p style="color:black;font-family:Georgia, serif;padding-left:80px">REGISTER</p>
+ <form method="post" id="form2"
+      style="border:black;border-width:1px; border-style:outset; padding: 10px 10px 10px 10px; width:222px;">
+      <!-- Mail input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="form2Example2" class="form-control" style="width:200px" placeholder="EmployeeID"
+          asp-for="EmployeeID" autocomplete="off" required />
+        <span asp-validation-for="EmployeeID" class="text-danger" style="color:white;font-family:Georgia, serif"></span>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="Password" id="form2Example3" class="form-control" style="width:200px" placeholder="Password"
+          asp-for="Password"
+          title="Atleast 8 characters. Atleast one uppercase letter, one lowercase letter and one number" required />
+        <span asp-validation-for="Password" class="text-danger" style="color:white;font-family:Georgia, serif"></span>
+      </div>
+      <div class="form-outline mb-4">
+        <input type="Password" id="form2Example3" class="form-control" style="width:200px" placeholder="Repeat-Password"
+          asp-for="Password"
+          title="Atleast 8 characters. Atleast one uppercase letter, one lowercase letter and one number" required />
+        <span asp-validation-for="Password" class="text-danger" style="color:white;font-family:Georgia, serif"></span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mb-4" style="width:200px">Sign Up</button>
+ </form>
+  </div>
+</body>
+
+

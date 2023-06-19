@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Aspire Systems </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Vehcile_Project.styles.css" asp-append-version="true" />
+    <style>
+        .move{
+            margin-left:65em;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="d-flex flex-column">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Aspire Systems</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CompanyPolicy">
+                                Privacy </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.aspiresys.com/company-overview"> About </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.aspiresys.com/contact-us"> Contact
+                            </a>
+                        </li>
+
+<style>
+                    #menu {
+  background: #343434;
+  color: #eee;
+  height: 35px;
+  border-bottom: 4px solid #eeeded
+}
+
+#menu ul,
+#menu li {
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none
+}
+.nav-right{
+    margin-left: 60em;
+}
+#menu ul {
+  height: 35px
+}
+
+#menu li {
+  float: left;
+  display: inline;
+  position: relative;
+  font: bold 12px Arial;
+  text-shadow: 0 -1px 0 #000;
+  border-right: 1px solid #444;
+  border-left: 1px solid #111;
+  text-transform: uppercase
+}
+
+#menu li:first-child {
+  border-left: none
+}
+
+#menu a {
+  display: block;
+  line-height: 35px;
+  padding: 0 14px;
+  text-decoration: none;
+  color: #eee;
+}
+
+#menu li:hover > a,
+#menu li a:hover {
+  background: #111
+}
+
+#menu input {
+  display: none;
+  margin: 0 0;
+  padding: 0 0;
+  width: 80px;
+  height: 35px;
+  opacity: 0;
+  cursor: pointer
+}
+
+#menu label {
+  font: bold 30px Arial;
+  display: none;
+  width: 35px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center
+}
+
+#menu label span {
+  font-size: 12px;
+  position: absolute;
+  left: 35px
+}
+
+#menu ul.menus {
+  height: auto;
+  width: 180px;
+  background: #111;
+  position: absolute;
+  z-index: 99;
+  display: none;
+  border: 0;
+}
+
+#menu ul.menus li {
+  display: block;
+  width: 100%;
+  font: 12px Arial;
+  text-transform: none;
+}
+
+#menu li:hover ul.menus {
+  display: block
+}
+
+#menu a.home {
+  background: #c00;
+}
+
+#menu a.prett {
+  padding: 0 27px 0 14px
+}
+
+#menu a.prett::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 6px 5px;
+  border-style: solid;
+  border-color: #eee transparent transparent transparent;
+  position: absolute;
+  top: 15px;
+  right: 9px
+}
+
+#menu ul.menus a:hover {
+  background: #333;
+}
+
+#menu ul.menus .submenu {
+  display: none;
+  position: absolute;
+  right: 180px;
+  background: #111;
+  top: 0;
+  width: 180px;
+}
+
+#menu ul.menus .submenu li {
+  background: #111;
+}
+
+#menu ul.menus .has-submenu:hover .submenu {
+  display: block;
+}
+</style>
+
+
+<nav >
+<div class="nav-right">
+  <ul id='menu'>
+
+    <li><a class='prett' href='#' title='Menu'>Manage Booking</a>
+      <ul class='menus'>
+        <li class='has-submenu'><a class='prett' href='Dropdown 1' title='Dropdown 1'>View Bookings</a>
+          <ul class='submenu'>
+            @* <li><a href="/Home/UserBooking" title="Sub Menu">Car</a></li> *@
+             <li><a href="/Home/UserCarHistory" title="Sub Menu">Car</a></li>
+            <li><a href="/Home/UserBus" title="Sub Menu">Bus</a></li>
+            @* <li><a href="/Home/BikeHistory" title="Sub Menu">Bike</a></li> *@
+          </ul>
+        </li>
+        @* <li><a href='#' title='Dropdown 2'>Track</a></li> *@
+        <li class='has-submenu'><a class='prett' href='Dropdown 1' title='Dropdown 1'>Track</a>
+          <ul class='submenu'>
+            <li><a href="/Home/LiveTrack" title="Sub Menu">Car</a></li>
+            <li><a href="/Home/LiveTrack" title="Sub Menu">Bus</a></li>
+          </ul>
+          </li>
+        <li><a href="/home/Feedback" title="Dropdown-4">Feedback</a></li>
+        <li><a href='/Home/Logout' title='Dropdown 3'>Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+@*                              
+                        <li class="nav-item ">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignAdmin">Admin  
+                            </a>
+                        </li>  *@
+            </div>
+        </nav>
+
+       
+        
+        </div>
+    </header>
+    <div class="container body">
+        <main role="main" class="pb-3">
+            
+@*             
+            <style>
+                body{background-image:url('https://th.bing.com/th?id=OIP.2cjT5YrhM92okYZRN3qN3wHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2');background-repeat:no-repeat;width:inherit;height:inherit;*@@*body{background:linear-gradient(black,white);}
+                }
+            </style> *@
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+<style>
+    .dropdown {
+			position: relative;
+			display: inline-block;.
+            float: right;
+            li .alignRight {
+  direction: rtl;
+}
+		}
+
+		/* Dropdown button */
+		.dropdown button {
+			background-color: #0d6efd;
+			color: white;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			padding: 10px;
+            li .alignRight {
+  direction: rtl;
+}
+            
+		}
+
+		/* Dropdown content (hidden by default) */
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			z-index: 1;
+		}
+
+		/* Links inside the dropdown */
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		/* Change color of dropdown links on hover */
+		.dropdown-content a:hover {background-color: #f1f1f1}
+
+		/* Show the dropdown menu on hover */
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+        
+</style>
+
+</html>

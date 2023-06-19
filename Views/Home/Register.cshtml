@@ -1,0 +1,139 @@
+@model Employees
+@{
+    ViewData["Title"] = "Create";
+}
+
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<style>  
+body{  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: black;  
+}  
+.container {  
+    padding: 50px;  
+  background-color:#7d98a1;  
+}  
+  
+input[type=text], input[type=password], textarea {  
+  width: 100%;  
+  padding: 15px;  
+  margin: 5px 0 22px 0;  
+  display: inline-block;  
+  border: none;  
+  background: #f1f1f1;  
+}  
+input[type=text]:focus, input[type=password]:focus {  
+  background-color: orange;  
+  outline: none;  
+}  
+ div {  
+            padding: 10px 0;  
+         }  
+hr {  
+  border: 1px solid #f1f1f1;  
+  margin-bottom: 25px;  
+}  
+.registerbtn {  
+  background-color: #4CAF50;  
+  color: white;  
+  padding: 16px 20px;  
+  margin: 8px 0;  
+  border: none;  
+  cursor: pointer;  
+  width: 100%;  
+  opacity: 0.9;  
+}  
+.registerbtn:hover {  
+  opacity: 1;  
+}  
+</style>  
+</head>  
+<body>  
+<form method="post">  
+  <div class="container">  
+  <center>  <h1> Employee Registeration Form</h1> </center>  
+  <hr>  
+  <label> Firstname </label>   
+<input asp-for="Firstname" type="text" name="firstname" placeholder= "Firstname" size="15" required />   
+<label> Middlename </label>   
+<input asp-for="Middlename" type="text" name="middlename" placeholder="Middlename" size="15" required />   
+<label> Lastname </label>    
+<input asp-for="Lastname" type="text" name="lastname" placeholder="Lastname" size="15"required />   
+<div>  
+<label>   
+Department   
+</label>   
+  
+<select asp-for="Department">  
+<option value="Course">SAT</option>  
+<option value="BCA">Data Science</option>  
+<option value="BBA">Data Engineering</option>  
+<option value="B.Tech">BackEnd</option>  
+<option value="MBA">FrontEnd</option>  
+<option value="MCA">Sales</option>  
+<option value="M.Tech">Support</option>  
+</select>  
+</div>  
+<div>  
+<label>   
+Gender 
+</label><br>  
+<input asp-for="Gender" type="radio" value="Male" name="gender" checked > Male   
+<input asp-for="Gender" type="radio" value="Female" name="gender"> Female   
+<input asp-for="Gender" type="radio" value="Other" name="gender"> Other  
+  
+</div>  
+<label>   
+Phone   
+</label>  
+<input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>   
+<input asp-for="Phone" type="text" name="phone" placeholder="phone no." size="10" required/>   
+CurrentAddress   
+<textarea asp-for="CurrentAddress" cols="80" rows="5" placeholder="Current Address" value="address" required>  
+</textarea>  
+ <label asp-for="EmployeeID" for="email"><b>EmployeeID</b></label>  
+ <input asp-for="EmployeeID" type="text" placeholder="Enter Email" name="email" required>  
+  
+    <label for="psw"><b>Password</b></label>  
+    <input asp-for="Password" type="password" placeholder="Enter Password" name="psw" required>  
+  
+    <label for="psw-repeat"><b>Re-type Password</b></label>  
+    <input type="password" placeholder="Retype Password" name="psw-repeat" required> 
+    <a asp-area="" asp-controller="Home" asp-action="Register">
+      <button type="submit" class="registerbtn">Register</button>          
+    </a>     
+</form>  
+</body>  
+</html>  
+@* <h1>Employees Record Creation </h1>
+<form method="post">
+    <p>
+        <label asp-for="EmployeeID" style="color:orange"></label></label>
+        <input asp-for="EmployeeID" placeholder="Employee ID" />
+    </p>
+    <p>
+        <label asp-for="EmployeeName" style="color:orange"></label></label>
+        <input asp-for="EmployeeName" />
+    </p>
+    <p>
+        <label asp-for="Department" style="color:orange"></label></label>
+        <input asp-for="Department" />
+    </p>
+</form>
+<form>
+    <p> *@
+        @*<label asp-for="Department" style="color:orange"></label>*@
+        @* <select asp-for="Department">
+        </select>
+        <option value="Development">Development</option>
+        <option value="Testing">Testing</option>
+        <option value="HR">HR</option>
+        <option value="Research">Research</option>
+        </select>
+    </p>
+    <p>
+        <button type="Submit">Submit</button>
+    </p>
+</form> *@

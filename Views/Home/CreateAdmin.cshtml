@@ -1,0 +1,34 @@
+@model LoginAdmin
+@{
+  ViewData[" Title"] = "Signup";
+}
+
+<body
+  background="https://th.bing.com/th/id/R.9a8e8cf7758dd7e03f11d8c33c9d7467?rik=mSfYvNs8BoKgJg&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2014%2f05%2ftrain-pictures-24.jpg&ehk=EvZdE3MMuYf8sQNgYI6Foc%2fcPAL0g7OCdt27ru%2fbDng%3d&risl=&pid=ImgRaw&r=0">
+  <form method="post" style="border:1px solid #ccc">
+    <div class="container">
+      <p style="color: orange;">Please fill in this form to create an account.</p>
+
+      <div class="form-outline mb-4">
+        <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" />
+        <label class="form-label" for="form2Example1" style="color: orange;">AdminID</label>
+      </div>
+      <div class="form-outline mb-4">
+        <input asp-for="Password" type="Password" id="form2Example2" class="form-control" style=color: orange; />
+        <label class="form-label" for="form2Example2" style="color: orange;">Password</label>
+      </div>
+      <div class="form-outline mb-4>
+      <label for=" psw-repeat" style="color: orange;"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      </div>
+      <p style="color: orange;">By creating an account you agree to our <a href="#" style="color:dodgerblue"
+          style="color: orange;">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</body>
+

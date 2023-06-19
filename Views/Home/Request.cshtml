@@ -1,0 +1,43 @@
+@model IEnumerable<VEHCILE.Models.BookingVehicle>
+
+@* //this will display the car request details *@
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="main-container">
+    <div class="middle">
+        <h1>
+            User Car Requests;
+        </h1>
+    </div>
+    <div class="store-table">
+        <table class="table">
+            <thread class="thead-light">
+                <tr>
+                    <th scope="col">EmployeeID</th>
+                    <th scope="col">PickUp</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Date</th>
+                    </tr>
+            </thread>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeID</td>
+                        <td>@item.PickUp</td>
+                        <td>@item.Destination</td>
+                        <td>@item.Time</td>
+                        <td>@item.Date</td>
+                        <td class="response">
+                            <a asp-controller="Home" asp-action="Accept" asp-route-id=@item.CarID>Accept</a>&nbsp;&nbsp;
+                            <a asp-controller="Home" asp-action="Decline" asp-route-id="@item.CarID">Decline</a>
+                        </td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+    </div>

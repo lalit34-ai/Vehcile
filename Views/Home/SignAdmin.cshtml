@@ -1,0 +1,52 @@
+@model LoginAdmin;
+@{
+    ViewData["Title"] = "Login";
+}
+
+<body background="https://wallpaperaccess.com/full/545501.jpg">
+    <form method="post">
+         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+        <div class="mb-md-5 mt-md-4 pb-5">
+        <h2 class="fw-bold mb-2 text-uppercase" style="color: #CBC3E3;">Login</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+        <div class="form-outline mb-4">
+            <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" required />
+            <label class="form-label" for="form2Example1" style="color: orange;">Enter AdminID(required)</label>
+        </div>
+        <div class="form-outline mb-4">
+            <input asp-for="Password" type="Password" id="form2Example2" class="form-control" style=color: orange; required />
+            <label class="form-label" for="form2Example2" style="color: orange;">Password (required)</label>
+        </div>
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                    <label class="form-check-label" for="form2Example31" style="color: orange;">Remember Me</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+            <p style="color:orange;font-family:Georgia, serif;padding-left:30px">Not a user? <a style="color:orange;"
+        asp-controller="Home" asp-action="signup">Register Here</a></p>
+        </div>
+        </div>
+          </div>
+        </div>
+    </form>
+</body>
+
+
+<style>
+.gradient-custom {
+/* fallback for old browsers */
+background: #6a11cb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+</style>

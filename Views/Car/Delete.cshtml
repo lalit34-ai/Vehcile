@@ -1,0 +1,132 @@
+@* @model Car
+@{
+ViewData["Title"]="Delete Car";
+}
+<div class="container">
+<div class="row">
+<div class="col-6 offset-3">
+<div class="mt-3 p-3 shadow rounded">
+<div class="text-center">
+<h2 class="text-info">Delete Car</h2>
+</div>
+<div>
+@Html.ValidationSummary()
+</div>
+<div class="mt-3 p-3">
+<form action="Delete" method="post" >
+<div class="mb-3 row">
+<label class="col-3 col-form-label text-info">CarType</label>
+<div class="col-9">
+@Html.TextBoxFor(m => m.CarType , new {@class="form-control",placeholder="Enter Type"})
+</div>
+</div>
+<div class="mb-3 row">
+<label class="col-3 col-form-label text-info">CarNumber</label>
+<div class="col-9">
+@Html.TextBoxFor(m=>m.CarNumber, new {@class="form-control",placeholder="Enter Number"})
+</div>
+</div>
+<div class="mb-3 row">
+<label class="col-3 col-form-label text-info">SeatingCapacity</label>
+<div class="col-9">
+@Html.TextBoxFor(m=>m.SeatingCapacity, new {@class="form-control",placeholder="Enter SeatingCapacity"})
+</div>
+</div>
+<div class="mb-3 row">
+<label class="col-3 col-form-label text-info">FuelType</label>
+<div class="col-9">
+<select name="FuelType" class="form-select">
+<option value="">Select FuelType</option>
+<option value="Petrol">Petrol</option>
+<option value="Diesel">Diesel</option>
+<option value="Electric">Electric</option>
+</select>
+</div>
+</div>
+
+<div class="mb-3">
+<button class="btn btn-sm shadow rounded p-2 btn-dark" type="submit">Clear</button>
+<button class="btn btn-sm shadow rounded p-2 btn-success" type="submit">Delete</button>
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+function showAleart(){
+if(@ViewBag.isSaved){
+if('@ViewBag.isSaved'=='True'){
+alert("Car Successfully Delted!")
+}
+}
+}
+$(document).ready(function(){
+showAleart();
+
+})
+</script> *@
+
+
+@model VEHCILE.Models.Car;
+
+@{
+    ViewBag.Title = "Delete Car";
+}
+<h1>Delete Car</h1>
+<h2> Are You Sure You want to Delelte?</h2>
+
+@* <div>
+    <h3>Car</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayFor(model=>model.VehicleNumber)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.VehicleType)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.SeatingCapacity)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.VehicleId)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.FuelType)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.PickUp)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(Model=>Model.DropOff)
+        </dt>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back To List","Index")
+        </div>
+    }
+</div> *@
+
+<div class="text-white" align="center" style="background-color: rgba(40, 39, 39, 0.8);">
+    <h1>Delete Car </h1>
+    <hr/>
+<form method="post">
+    <div class="form-group">
+    
+    <label class="form-label" asp-for="CarNumber"> CarNumber : 
+      <input size="20"  asp-for="CarNumber" class="form-control" />
+    </label>
+  </div>
+  <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Delete</button>
+</form>
+</div>

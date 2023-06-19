@@ -1,0 +1,65 @@
+@model Driver
+@{
+    ViewData["Title"]="Add New Driver";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+        <div class="mt-3 p-3 shadow rounded">
+            <div class="text-center">
+                <h2 class="text-info">Add New Driver</h2>
+            </div>
+            <div>
+                @Html.ValidationSummary()
+            </div>
+            <div class="mt-3 p-3">
+                <form action="Add" method="post" >
+                    <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">EmployeeID</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(q => q.EmployeeID , new {@class="form-control",placeholder="Enter Id"})
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">Name</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(q => q.Name , new {@class="form-control",placeholder="Enter your Name"})
+                    </div>
+                </div>
+                 <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">PhoneNumber</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(q=>q.PhoneNumber, new {@class="form-control",placeholder="Enter Number"})
+                    </div>
+                </div>    
+                @* <div class="mb-3 row">
+                    <label asp-for="DriverLicense" class="mb-3">Upload License</label>
+                    <input name="file" type="file" class="form-control"/>
+                </div>           *@
+                <div class="mb-3">
+                    <button class="btn btn-sm shadow rounded p-2 btn-dark" type="submit">Clear</button>
+                    <button class="btn btn-sm shadow rounded p-2 btn-success" type="submit">Add</button>
+                </div>
+
+                </form>
+
+            </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript"> 
+    function showAleart(){
+        if(@ViewBag.isSaved){
+            if('@ViewBag.isSaved'=='True'){            
+            alert("New Driver Successfully Added!")
+        }
+        }
+    }
+    $(document).ready(function(){
+        showAleart();
+
+    })
+</script>

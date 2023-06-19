@@ -1,0 +1,37 @@
+@* This shows the history of user booked bus vehicle *@
+
+@model IEnumerable<VEHCILE.Models.BookingVehicle>
+@{
+    ViewData["Title"]="Bike Tickets";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="store-table">
+    <table class="table">
+        <thread class="thead-light">
+            <tr>
+                <th scope="col">City</th>
+                <th scope="col">Pick Date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Drop Time</th>
+                <th scope="col">BikeNumber</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach(var bikebook in Model){
+                <tr>
+                    <th scope="row">@bikebook.PickUp</th>
+                    <td>@bikebook.PickDate</td>
+                    <td>@bikebook.StartTime</td>
+                    <td>@bikebook.EndTime</td>
+                    <td>@bikebook.EndDate</td>
+                    <td>@bikebook.BikeNumber</td>
+                    <td><button class="update-button">Delete Ride</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

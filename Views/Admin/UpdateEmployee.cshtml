@@ -1,0 +1,25 @@
+@model VEHCILE.Models.Employees;
+
+@{
+    ViewBag.Title = "Update Details Of Employee";
+}
+<h1>Update Employee Details</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h2>Employee</h2>
+        <hr />
+        @Html.ValidationSummary(true,"",new {@class="text-danger"})
+        @Html.HiddenFor(model=>model.EmployeeID)
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.EmployeeID,htmlAttributes:new{@class="control-label col-md-2"} )
+            <div class="col-md-10">
+                @Html.EditorFor(model=>model.EmployeeID,new {htmlAttributes=new{@class="form-control"}})
+                @Html.ValidationMessageFor(model=>model.EmployeeID,"",new{@class ="text-danger"})
+            </div>
+        </div>
+    </div>
+}

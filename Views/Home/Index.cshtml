@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "../Shared/_Employeelayout";
+}
+<body background="https://th.bing.com/th/id/R.d4677503782df53084ab8e755b74b053?rik=SN7tP%2fZXjLQDJw&riu=http%3a%2f%2fmedia1.popsugar-assets.com%2ffiles%2f2021%2f01%2f14%2f843%2fn%2f1922507%2fdd265517553cf2bb_huper-by-joshua-earle-a3xymeWNDso-unsplash%2fi%2fOcean-Sunset-Zoom-Background.jpg&ehk=ecLptbDJQLMJtEa31yK6qI9qdeX6JkpJSFzAWbrqNGU%3d&risl=&pid=ImgRaw&r=0">
+<div class="text-center">
+    <h1 class="display-4" style="color: white">Welcome To Transport Department</h1>
+    @* <a style="color:orange">About Us<a href="https://www.aspiresys.com/"></a> *@
+</div>
+<br> 
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width:500px">
+                <a asp-area="" asp-controller="Home" asp-action="Bus1"><img class="alignnone size-full wp-image-1303" src="https://lp-cms-production.imgix.net/2020-07/Hemphill%20celebrity%20bus.jpg?auto=compress&fit=crop&fm=auto&sharp=10&vib=20&w=1200" alt="card-image-4" width="100%"  /></a>
+                <div class="card-body">
+                    <h2 class="card-title">Bus</h2>
+                    <p class="card-text">Book your Bus here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+        <div class="card" style="width:500px"> 
+            <a  asp-area="" asp-controller="Home" asp-action="Cab1"><img class="alignnone size-full wp-image-1303" src="https://th.bing.com/th/id/OIP.oM_EI9kwz4cprhzSIAihcwHaE8?pid=ImgDet&rs=1" alt="card-image-4" width="100%"  /></a>
+                <div class="card-body">
+                    <h2 class="card-title">Cab</h2>
+                    <p class="card-text">Book your Cab here.</p>
+                </div>
+            </div>
+    </div>
+    @* <div class="col-sm-4">
+        <div class="card" style="width:400px">
+            <a asp-area="" asp-controller="Home" asp-action="Bike1"><img class="alignnone size-full wp-image-1303" src="https://th.bing.com/th/id/OIP.kIMmaE0m5-DqLhx62lACPAAAAA?w=232&h=180&c=7&r=0&o=5&pid=1.7" alt="card-image-4" width="400" height="300" /></a>
+                <div class="card-body">
+                    <h2 class="card-title">Bike</h2>
+                    <p class="card-text">Book your Bike/Scooty here.</p>
+                </div>
+            </div>
+    </div> *@
+    </div>
+</div>
+</body>
+<hr>
+</hr>
+    <footer>
+      <div class="footer-container">
+        <div class="left-col">
+          <p class="rights-text" style="color: white">&copy;@DateTime.Now.Year   All Rights Reserved.</p>
+        </div>
+        <div class="right-col">
+          <h1 style="color: white;">Our Newsletter</h1>
+          <div class="border"></div>
+          <p style="color: yellow">Enter Your Email to get our news and updates.</p>
+          <form action="" class="newsletter-form">
+            <input type="text" class="txtb" placeholder="Enter Your Email">
+            @* <input type="submit" class="btn" value="Submit"> *@
+            @* <button type="button" class="btn btn-info" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button> *@
+            <button type="Submit" value=" Send" class="btn btn-success" id="submit"><i class="glyphicon glyphicon-inbox"></i> Submit</button>
+          <script type="text/javascript">
+     $(document).ready(function () {
+$("input#submit").click(function(){
+    $.ajax({
+        type: "POST",
+        url: "mail.php", //process to mail
+        data: $('form.contact').serialize(),
+        success: function(msg){
+            $("#thanks").html(msg) //hide button and show thank you
+            $("#form-content").modal('hide'); //hide popup  
+        },
+        error: function(){
+            alert("failure");
+        }
+    });
+});
+});
+  <?php
+$myemail = 'contact@tinymine.info';
+
+//grab named inputs from html then post to #thanks
+if (isset($_POST['name'])) {
+$name = strip_tags($_POST['name']);
+$email = strip_tags($_POST['email']);
+$message = strip_tags($_POST['message']);
+echo "<span class=\"alert alert-success\" >Thank you for your subscription.</span><br><br>";
+echo "<stong>Name:</strong> ".$name."<br>";   
+echo "<stong>Email:</strong> ".$email."<br>"; 
+echo "<stong>Message:</strong> ".$message."<br>";
+
+//generate email and send!
+$to = $myemail;
+$email_subject = "Contact form submission: $name";
+$email_body = "You have received a new message. ".
+" Here are the details:\n Name: $name \n ".
+"Email: $email\n Message \n $message";
+$headers = "From: $myemail\n";
+$headers .= "Reply-To: $email";
+mail($to,$email_subject,$email_body,$headers);
+}
+?>
+    
+  </script>
+      </form>
+          
+          
+        </div>
+      </div>
+ 
