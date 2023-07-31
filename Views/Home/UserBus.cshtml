@@ -1,0 +1,42 @@
+@* This shows the history of user booked bus vehicle *@
+@using System.Data;
+@model System.Data.DataTable;
+@{
+    ViewData["Title"]="Bus Tickets";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="store-table">
+    <table class="table">
+        <thread class="thead-light">
+            <tr>
+                <th scope="col">PickUp</th>
+                <th scope="col">Destination</th>
+                <th scope="col">BusNumber</th>
+                @* <th scope="col">Time</th> *@
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach(DataRow busbook in Model.Rows){
+                <tr>
+                    @* <th scope="row">@busbook.PickUp</th>
+                    <td>@busbook.Destination</td>
+                    <td>@busbook.Date</td>
+                    @* <td>@busbook.Time</td> *
+                    <td>@busbook.BusNumber</td> *@
+                    <td>@busbook[7]</td>
+                    <td>@busbook[8]</td>
+                    <td>@busbook[2]</td>
+                    <td>@busbook[3]</td>
+                    <td>@busbook[4]</td>
+                    
+                </tr>
+                @* <td><button class="update-button">Delete Ride</button></td> *@
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,20 @@
+@model VEHCILE.Models.Driver;
+
+@{
+    ViewBag.Title = "Delete Details";
+}
+<div class="text-white" align="center" style="background-color: rgba(40, 39, 39, 0.8);">
+    <h1>Delete Driver </h1>
+    <hr/>
+<form method="post">
+    <div class="form-group">
+    
+    <label class="form-label" asp-for="PhoneNumber"> PhoneNumber : 
+      <input size="20" readonly asp-for="PhoneNumber" class="form-control" />
+    </label>
+  </div>
+  <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Delete</button>
+</form>
+</div>
+
+

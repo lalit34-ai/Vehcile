@@ -1,0 +1,47 @@
+@model IEnumerable<Bookebususer>
+
+<link rel="stylesheet" href="~/css/store.css"  />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="main-container"> 
+<div class="middle">
+            <h1>
+                Customer Request
+            </h1>
+            </div>
+            <div class="store-table">
+    <table class="table"> 
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Employee ID</th>
+      <th scope="col">PickUp</th>
+      <th scope="col">Drop Off</th>
+      <th scope="col">BusNumber</th>
+      <th scope="col">CarNumber</th>
+      <th scope="col">Requested Date</th>
+      @* <th scope="col">Floor</th> *@
+      <th scope="col">Response</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var sellProduct in Model)
+    {
+     <tr>
+       <td>@sellProduct.EmployeeID</td>
+       <td>@sellProduct.PickUp</td>
+       <td>@sellProduct.DropOff</td>
+       <td>@sellProduct.BusNumber</td>
+        <td>@sellProduct.BusType</td> 
+        @* The above entry is for car CarNumber *@
+        <td>@sellProduct.quantity</td>
+        
+        
+      <td class="response">
+        <a asp-controller="Home" asp-action="Accept" asp-route-id=@sellProduct.BusNumber asp-route-name=@sellProduct.BusNumber>accept</a>&nbsp;&nbsp;
+        <a asp-controller="Home" asp-action="Decline" asp-route-id=@sellProduct.BusNumber>decline</a>
+      </td>
+    </tr>
+    } 
+  </tbody>
+</table>
+</div>

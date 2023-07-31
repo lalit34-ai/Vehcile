@@ -1,0 +1,82 @@
+@model Bike;
+@{
+    ViewData["Title"]="Add New Bike";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+        <div class="mt-3 p-3 shadow rounded">
+            <div class="text-center">
+                <h2 class="text-info">Add new Bike</h2>
+            </div>
+            <div>
+                @Html.ValidationSummary()
+            </div>
+            <div class="mt-3 p-3">
+                <form action="/Bike/Add" method="post" enctype="multipart/form-data" autocomplete="off">
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">BikeType</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(s =>s.Name , new {@class="form-control",placeholder="Enter Type.."})
+                    </div>
+                </div>
+                 <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">BikeNumber</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(s=>s.BikeNumber, new {@class="form-control",placeholder="Enter Number.."})
+                    </div>
+                </div>
+                 <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">Seating Capacity</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(p=>p.SeatingCapacity, new {@class="form-control",placeholder="Enter SeatingCapacity"})
+                    </div>
+                </div>
+                 <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">Fuel Type</label>
+                    <div class="col-9">
+                        <select name="FuelType" class="form-select">
+                            <option value="">Select FuelType</option>
+                            <option value="Petrol">Petrol</option>
+                           <option value="Diesel">Diesel</option>
+                           <option value="Electric">Electric</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">Pickup</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(s=>s.PickUp, new {@class="form-control",placeholder="Enter PickUp.."})
+                    </div>
+                </div>   
+                <div class="mb-3 row">
+                    <label class="col-3 col-form-label text-info">Destination</label>
+                    <div class="col-9">
+                        @Html.TextBoxFor(s=>s.DropOff, new {@class="form-control",placeholder="Enter Destination.."})
+                    </div>
+                </div>                
+                <div class="mb-3">
+                    <button class="btn btn-sm shadow rounded p-2 btn-dark" type="submit">Clear</button>
+                    <button class="btn btn-sm shadow rounded p-2 btn-success" type="submit">Add</button>
+                </div>
+                </form>
+            </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript"> 
+    function showAleart(){
+        if(@ViewBag.isSaved){
+            if('@ViewBag.isSaved'=='True'){            
+            alert("New Bike Successfully Added!")
+        }
+        }
+    }
+    $(document).ready(function(){
+        showAleart();
+
+    })
+</script>

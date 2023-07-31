@@ -1,0 +1,34 @@
+@model VEHCILE.Models.Car;
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="text-white" align="center" style="background-color: rgba(40, 39, 39, 0.8);">
+    <h1>Edit Car Details</h1>
+    <hr/>
+<form method="post">
+    <div class="form-group">
+    
+    <label class="form-label" asp-for="CarNumber"> CarNumber : 
+      <input size="20"  asp-for="CarNumber" class="form-control" />
+    </label>
+  </div>
+   
+  <div class="form-group">
+    
+    <label class="form-label" asp-for="PickUp">PickUp:
+      <input size="20" asp-for="PickUp" class="form-control" />
+    </label>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" asp-for="SeatingCapacity">Seating Capacity: 
+    <input size="20" asp-for="SeatingCapacity" class="form-control"  />
+          </label>
+  </div>
+   <div class="form-outline mb-4">
+    <label class="form-label" asp-for="DropOff">DropOff: 
+    <input size="20" asp-for="DropOff" class="form-control" />
+          </label>
+  </div>
+
+  <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Update</button>
+</form>

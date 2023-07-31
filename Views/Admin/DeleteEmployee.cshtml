@@ -1,0 +1,31 @@
+@model VEHCILE.Models.Employees;
+
+@{
+    ViewBag.Title = "Delete Employee";
+}
+<h1>Delete Employee</h1>
+<h2> Are You Sure You want to Delelte?</h2>
+
+<div>
+    <h3>Employee</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayFor(model=>model.EmployeeID)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.Firstname)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model=>model.Department)
+        </dt>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back To List","Index")
+        </div>
+    }
+</div>
