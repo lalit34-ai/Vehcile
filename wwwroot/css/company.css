@@ -1,0 +1,10 @@
+.time-container {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: grey;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }

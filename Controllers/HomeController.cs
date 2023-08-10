@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 using System.Web;
@@ -21,8 +23,7 @@ using VEHCILE.Models;
 using System.Text;
 using VEHCILE.Repository;
 using Newtonsoft.Json;
-// using System.Web;
-// using System.Web.UI.WebControls;
+using Serilog;
 
 namespace VEHCILE.Controllers
 {
@@ -31,10 +32,13 @@ namespace VEHCILE.Controllers
     {
         public IConfiguration configuration;
         private readonly ApplicationDbContext _db;
+        private readonly IEmployeeRepository _employeeRepository;
         private readonly IData _data;
-        public HomeController(ApplicationDbContext db)
+
+        public HomeController(ApplicationDbContext db, IEmployeeRepository employeeRepository)
         {
             _db = db;
+            _employeeRepository = employeeRepository;
         }
 
         public IActionResult Index()
@@ -67,12 +71,15 @@ namespace VEHCILE.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                }
+            );
         }
-
 
         [HttpGet]
         public IActionResult CustomerRequest()
@@ -85,12 +92,9 @@ namespace VEHCILE.Controllers
         [HttpPost]
         public IActionResult CustomerRequest(Bookebususer bookebususer)
         {
-
             ViewBag.Session = HttpContext.Session.GetString("Session");
             return RedirectToAction("bookeBHususer");
-
         }
-
 
         [HttpGet]
         public IActionResult Bus1()
@@ -102,26 +106,31 @@ namespace VEHCILE.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Bus1(Bus obj)
         {
             if (true)
             {
-                SqlConnection conn=new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=enterprise;Integrated Security=true");
-                SqlCommand cmd=new SqlCommand("Select SeatingCapacity  from Buses where BusNumber=@BusNumber",conn);
-                cmd.Parameters.AddWithValue("@BusNumber","TN 45 SM 9875");
+                SqlConnection conn = new SqlConnection(
+                    @"Data Source=.\SQLEXPRESS;Initial Catalog=enterprise;Integrated Security=true"
+                );
+                SqlCommand cmd = new SqlCommand(
+                    //"Select SeatingCapacity  from Buses where BusNumber=@BusNumber",
+                    "GetSeatingCapacity",
+                    conn
+                );
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BusNumber", "TN 45 SM 9875");
                 conn.Open();
-                int SeatingCapacity=Convert.ToInt32(cmd.ExecuteScalar());
+                int SeatingCapacity = Convert.ToInt32(cmd.ExecuteScalar());
                 conn.Close();
-                int passengers=40;
-                if(passengers==SeatingCapacity){
-                    ViewBag.Message="Seating Capacity Full";
+                int passengers = 40; // put this in property file
+                if (passengers == SeatingCapacity)
+                {
+                    ViewBag.Message = "Seating Capacity Full";
                 }
                 ViewBag.Session = HttpContext.Session.GetString("EmployeeID");
-                Console.WriteLine(HttpContext.Session.GetString("EmployeeID"));
                 Bookebususer requestObj = new Bookebususer();
                 requestObj.EmployeeID = ViewBag.Session;
-                // requestObj.EmployeeID = null;
                 requestObj.PickUp = obj.PickUp;
                 requestObj.DropOff = obj.DropOff;
                 requestObj.senddate = obj.Date;
@@ -132,30 +141,19 @@ namespace VEHCILE.Controllers
                 SeatBooked.BusLinking();
                 return RedirectToAction("BusSeat");
             }
-            
+
             Console.WriteLine("Seating Capacity of the Bus is full");
-            return RedirectToAction("Bus1");
-        }
-        
+            }
+
         [HttpGet]
         public IActionResult Cab1()
         {
-            ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            // List<Car> car1 =car1 ;
-            // ata n1=new Data(); new inner();
-            // inner data =new inner(IConfiguration configuration) ;
-            // List <IEnumerable<Car>> carList =null ;
-           // var cars1 =GetAllCars();
-            //Console.WriteLine(cars1);
-            //ViewBag.carList = cars;
-            // if(data!=null){
-            //     carList=(IEnumerable<Car>)data.GetAllCars();
-            // }
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
             List<Car> car1 = _db.Cars.ToList();
             ViewBag.busList = car1;
             return View();
         }
+
         [HttpPost]
         public IActionResult Cab1(Car obj1)
         {
@@ -164,7 +162,6 @@ namespace VEHCILE.Controllers
                 ViewBag.Session = HttpContext.Session.GetString("EmployeeID");
                 Bookcaruser requestObj1 = new Bookcaruser();
                 requestObj1.EmployeeID = ViewBag.Session;
-                // requestObj.EmployeeID = null;
                 requestObj1.PickUp = obj1.PickUp;
                 requestObj1.DropOff = obj1.DropOff;
                 requestObj1.senddate = obj1.Date;
@@ -191,14 +188,6 @@ namespace VEHCILE.Controllers
             DataTable new12 = Repository.inner.displayBookingDetails(empid);
             return View("UserCarHistory", new12);
         }
-
-        public IActionResult BikeHistory()
-        {
-            string empid = HttpContext.Session.GetString("EmployeeID");
-            DataTable new13 = Repository.inner.displayBookingDetails(empid);
-            return View("BikeHistory", new13);
-        }
-
         public IActionResult UserBus()
         {
             string empid = HttpContext.Session.GetString("EmployeeID");
@@ -211,102 +200,119 @@ namespace VEHCILE.Controllers
         {
             return View();
         }
-
+        
         public IActionResult BusSeat()
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
             return View();
         }
 
-        public IActionResult Bike1()
-        {
-            ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            return View();
-        }
-        public IActionResult BikeInside()
-        {
-            ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            return View();
-        }
-        public IActionResult BikeInside2()
-        {
-            ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            return View();
-        }
         [HttpGet]
         public IActionResult Log()
         {
-
+            Serilog.Log.Information("Log action called");
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
             return View();
         }
-        [HttpPost]
-        public IActionResult Log(LoginEmployee loginemployee)
-        {
-            // added to use session
-            if (!ModelState.IsValid)
-            {
-                throw new InvalidUserException("Invalid User");
-            }
-            else
-            {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"))
-                {
-                    try
-                    {
-                        connection.Open();
-                        Console.WriteLine("Okay");
-                        String uname = loginemployee.EmployeeID;
-                        String pwd = loginemployee.Password;
-                        SqlCommand sqlcmd = new SqlCommand("select * from Vehcile where EmployeeID='" + uname + "' and password='" + pwd + "';", connection);
-                        SqlDataReader reader = sqlcmd.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            if (Convert.ToString(reader["EmployeeID"]) == uname && Convert.ToString(reader["password"]) == pwd)
-                            {
 
-                                HttpContext.Session.SetString("EmployeeID", loginemployee.EmployeeID);
-                                return View("Index");
-                            }
-                        }
-                    }
-                    catch (SqlException ex)
+        [HttpPost]
+        public async Task<IActionResult> Log(LoginEmployee loginemployee)
+        {
+            using (
+                SqlConnection connection = new SqlConnection(
+                    @"Data Source=.\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"
+                )
+            )
+            {
+                try
+                {
+                    connection.Open();
+                    Console.WriteLine("Okay");
+                    String uname = loginemployee.EmployeeID;
+                    String pwd = loginemployee.Password;
+                    SqlCommand sqlcmd = new SqlCommand("AuthenticateUser", connection);
+                    sqlcmd.CommandType = CommandType.StoredProcedure;
+                    sqlcmd.Parameters.AddWithValue("@EmployeeID", uname);
+                    sqlcmd.Parameters.AddWithValue("@Password", pwd);
+                    
+                    Serilog.Log.Information("User {EmployeeID} attempted to log in", loginemployee.EmployeeID);
+                    int result = Convert.ToInt32(sqlcmd.ExecuteScalar());
+
+                    if (result == 1)
                     {
-                        Console.WriteLine("Error : " + ex.Message.ToString());
-                        ModelState.AddModelError("CustomError", "Invalid ID or Password");
+                        var claims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Name, loginemployee.EmployeeID),
+                        };
+
+                        var claimsIdentity = new ClaimsIdentity(
+                            claims,
+                            CookieAuthenticationDefaults.AuthenticationScheme
+                        );
+                        var authProperties = new AuthenticationProperties
+                        {
+                            IsPersistent = true,
+                            ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                        };
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(claimsIdentity),
+                            authProperties
+                        );
+                        return RedirectToAction("Index");
                     }
-                    finally
+                    else
                     {
-                        Console.WriteLine("Press any key to exit.....");
-                        connection.Close();
+                        ModelState.AddModelError("CustomerError", "Invalid ID or password");
                     }
-                    connection.Close();
-                    return View("Log");
                 }
+                catch (SqlException ex)
+                {
+                    Serilog.Log.Error(ex, "Error occurred during login: {ErrorMessage}", ex.Message);
+                    Console.WriteLine("Error : " + ex.Message.ToString());
+                    ModelState.AddModelError("CustomError", "Invalid ID or Password");
+                }
+                finally
+                {
+                    Console.WriteLine("Press any key to exit.....");
+                    connection.Close();
+                }
+
+                return View("Log");
             }
         }
-        public IActionResult Logout()
+
+        public async Task<IActionResult> Logout()
         {
-            //Delete the Session object.
-            HttpContext.Session.Remove("EmployeeID");
+            Serilog.Log.Information("User logged out");    
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Log", "Home");
         }
+
         public IActionResult LiveTrack()
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
+
             return View();
         }
+
         [HttpGet]
         public IActionResult SignAdmin()
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
             return View();
         }
+
         [HttpPost]
         public IActionResult SignAdmin(LoginAdmin admin)
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            using (SqlConnection connection = new SqlConnection(@"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"))
+            using (
+                SqlConnection connection = new SqlConnection(
+                    @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"
+                )
+            )
             {
                 try
                 {
@@ -314,20 +320,25 @@ namespace VEHCILE.Controllers
                     Console.WriteLine("Okay");
                     String uname = admin.EmployeeID;
                     String pwd = admin.Password;
-                    SqlCommand sqlcmd = new SqlCommand("select * from Vehcile where EmployeeID='" + uname + "' and password='" + pwd + "';", connection);
-                    SqlDataReader reader = sqlcmd.ExecuteReader();
-                    if (reader.Read())
+                    SqlCommand sqlcmd = new SqlCommand("AuthenticateAdmin", connection);
+                    sqlcmd.CommandType = CommandType.StoredProcedure;
+                    sqlcmd.Parameters.AddWithValue("@EmployeeID", uname);
+                    sqlcmd.Parameters.AddWithValue("@Password", pwd);
+
+                    int result = Convert.ToInt32(sqlcmd.ExecuteScalar());
+                    if (result == 1)
                     {
-                        if (Convert.ToString(reader["EmployeeID"]) == uname && Convert.ToString(reader["password"]) == pwd)
-                        {
-                            return View("Details");
-                        }
+                        return View("Details");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid user name or password");
                     }
                 }
                 catch (SqlException ex)
                 {
                     Console.WriteLine("Error : " + ex.Message.ToString());
-                    ModelState.AddModelError("", "Invalid username or Password");
+                    ModelState.AddModelError("", "An error occured during login.");
                 }
                 finally
                 {
@@ -338,12 +349,16 @@ namespace VEHCILE.Controllers
                 return View();
             }
         }
-        [HttpPost]
 
+        [HttpPost]
         public IActionResult Admin(LoginAdmin admin)
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
-            using (SqlConnection connection = new SqlConnection(@"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"))
+            using (
+                SqlConnection connection = new SqlConnection(
+                    @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=true"
+                )
+            )
             {
                 try
                 {
@@ -351,17 +366,20 @@ namespace VEHCILE.Controllers
                     Console.WriteLine("Okay");
                     String uname = admin.EmployeeID;
                     String pwd = admin.Password;
-                    SqlCommand sqlcmd = new SqlCommand("select * from Vehicle where EmployeeID='" + uname + "' and password='" + pwd + "';", connection);
-                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    SqlCommand sqlcmd = new SqlCommand("AuthenticateAdmin", connection);
+                    sqlcmd.CommandType = CommandType.StoredProcedure;
+                    sqlcmd.Parameters.AddWithValue("@EmployeeID", uname);
+                    sqlcmd.Parameters.AddWithValue("@Password", pwd);
 
-                    if (reader.Read())
+                    int result = Convert.ToInt32(sqlcmd.ExecuteScalar());
+                    if (result == 1)
                     {
-                        if (Convert.ToString(reader["EmployeeID"]) == uname && Convert.ToString(reader["password"]) == pwd)
-                        {
-                            return View("Details");
-                        }
+                        return View("Details");
                     }
-
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid user name or password");
+                    }
                 }
                 catch (SqlException ex)
                 {
@@ -373,26 +391,28 @@ namespace VEHCILE.Controllers
                     Console.WriteLine("Press any key to exit.....");
                     connection.Close();
                 }
-                //connection.Close();   
-                //}
                 connection.Close();
                 return View();
             }
         }
+
         public IActionResult Details()
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
 
             return View();
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             ViewBag.userSession = HttpContext.Session.GetString("EmployeeID");
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(LoginAdmin admin1){
+        public IActionResult Create(LoginAdmin admin1)
+        {
             Regex usernamepattern = new Regex("^[A-Z][A-Za-z0-9_@]{4,}$");
             Regex passwordpattern = new Regex(@"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})");
 
@@ -402,15 +422,17 @@ namespace VEHCILE.Controllers
 
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
+                connection.ConnectionString =
+                    @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
                 try
                 {
                     connection.Open();
                     Console.WriteLine("Okay");
-                    string query = "INSERT INTO Vehcile(EmployeeID,password) Values('" + EmployeeID + "','" + password + "')";
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    using (SqlCommand cmd = new SqlCommand("InsertAdmin", connection))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                        cmd.Parameters.AddWithValue("@Password", password);
 
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Record Inserted");
@@ -426,8 +448,8 @@ namespace VEHCILE.Controllers
                 {
                     connection.Close();
                 }
-            return View();
-        }
+                return View();
+            }
         }
 
         [HttpGet]
@@ -435,7 +457,7 @@ namespace VEHCILE.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult signup(LoginEmployee signup)
         {
@@ -449,15 +471,17 @@ namespace VEHCILE.Controllers
 
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
+                connection.ConnectionString =
+                    @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
                 try
                 {
                     connection.Open();
                     Console.WriteLine("Okay");
-                    string query = "INSERT INTO Vehcile(EmployeeID,password) Values('" + EmployeeID + "','" + password + "')";
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    using (SqlCommand cmd = new SqlCommand("InsertUser", connection))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                        cmd.Parameters.AddWithValue("@Password", password);
 
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Record Inserted");
@@ -476,11 +500,13 @@ namespace VEHCILE.Controllers
                 return View();
             }
         }
+
         [HttpGet]
         public IActionResult Forgot()
         {
             return View();
         }
+
         [HttpPost]
         public void Forgot(string password)
         {
@@ -488,38 +514,40 @@ namespace VEHCILE.Controllers
 
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
+                connection.ConnectionString =
+                    @"Data Source=LALIT\SQLEXPRESS;Initial Catalog=user;Integrated Security=SSPI";
                 try
                 {
                     connection.Open();
                     Console.WriteLine("Okay");
-                    string query2 = "UPDATE Vehcile SET password='" + password + "' WHERE name='" + password + "'";
-
-                    using (SqlCommand cmd = new SqlCommand(query2, connection))
+                    string employeeID = ViewBag.userSession;
+                    using (SqlCommand cmd = new SqlCommand("ResetPassword", connection))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+                        cmd.Parameters.AddWithValue("@NewPassword", password);
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Record Updated");
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Not ok" + e);
+                    Console.WriteLine("Not okay" + e);
                 }
                 finally
                 {
+                    Console.WriteLine("Press any key to exit.....");
                     connection.Close();
                 }
             }
-            Console.WriteLine("you have suuccesfully changed your password");
-            return;
         }
 
         public IActionResult Feedback()
         {
             return View();
         }
-        [HttpPost]
 
+        [HttpPost]
         public async Task<IActionResult> Feedback(Feedback feedback)
         {
             feedback.emailid = Request.Form["emailid"];
@@ -535,27 +563,18 @@ namespace VEHCILE.Controllers
             Console.WriteLine(result);
             return View();
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult Register(Employees employees1){     
-            SqlConnection con=new SqlConnection(@"Data Source=LALIT\SQLEXPRESS;Initial Catalog=enterprise;Integrated Security=SSPI;"); 
-            con.Open();
-             string que = String.Format($"Insert into EmployeeDetails(Firstname,Middlename,Lastname,Department,Gender,Phone,CurrentAddress,EmployeeID,Password) values('{employees1.Firstname}','{employees1.Middlename}','{employees1.Lastname}','{employees1.Department}','{employees1.Gender}','{employees1.Phone}','{employees1.CurrentAddress}','{employees1.EmployeeID}','{employees1.Password}')",  employees1.Firstname, employees1.Middlename, employees1.Lastname, employees1.Department, employees1.Gender, employees1.Phone, employees1.CurrentAddress,employees1.EmployeeID, employees1.Password);
-           // SqlCommand cmd=new SqlCommand("Insert into EmployeeDetails"+"(Firstname,Middlename,Lastname,Department,Gender,Phone,CurrentAddress,EmployeeID,Password) values(@Firstname,@Middlename,@Lastname,@Department,@Gender,@Phone,@CurrentAddress,@EmployeeID,@Password)",con);
-            SqlCommand cmd=new SqlCommand(que,con);
-            cmd.ExecuteNonQuery();
-            Console.WriteLine("Reached register function");
-            // Console.WriteLine(employees1.EmployeeID);
-            // _data.AddNewEmployee(employees1);
-            // // ViewBag.y1saved=y1saved;
+        public IActionResult Register(Employees employees1)
+        {
+            _employeeRepository.AddNewEmployee(employees1);
             return View();
         }
-
-
-
     }
 }

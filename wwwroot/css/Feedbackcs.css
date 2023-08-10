@@ -1,0 +1,13 @@
+
+.body {
+  background: #1d0e0e;
+  /* background-image:; */
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
+  background:  #d199fff1;
+  padding: 10px;
+  box-shadow:  0 0 5px 5px #888888;
+}

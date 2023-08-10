@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]="Details"</title>
+    <link rel="stylesheet" href="D:\Education\Internship\Vehcile\Views\Admin\Detailsstyle.css">
+</head>
+
+<body style="background-color: green;height: 100%;">
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Welcome</h2>
+            <ul>
+                <li><a href="#"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="#"><i class="fas fa-users"></i>Employees</a></li>
+                <li><a href="#"><i class="fas fa-address-card"></i>Policies</a></li>
+                <li><a href="/Home/AddEmployee"><i class="fas  fa-plus"></i></i>Add Employee</a></li>
+                <li><a href="/Home/AddAdmin"><i class="fas fa-id-badge"></i>Add new Admin</a></li>
+                @* <li><a href="#"><i class="fas fa-question"></i></i></i>Help</a></li> *@
+                <li><a href="/Home/Login"><i class="fas  fa-sign-out"></i></i></i>Log out</a></li>
+            </ul>
+        </div>
+        <div class="main_content">
+            <div class="info">
+                <!-- @* <h2 style="text-align:center">User Profile </h2> *@ -->
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=" alt="" style="width:50%;margin-left:90px;">
+                    <h2 style="color:violet;">Name </h2>
+                    <p class="title">Role : </p><br>
+                    <p class="title">Age : </p><br>
+                    <p class="title">Phone : </p><br>
+                    <p class="title">Address : </p><br>
+                    <p class="title">Email : </p>
+                    <p><button><a href="/Home/UpdateProfile">Update Profile</a></button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

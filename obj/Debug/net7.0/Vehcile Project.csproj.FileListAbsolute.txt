@@ -302,3 +302,6 @@ D:\Education\Internship\Vehcile\obj\Debug\net7.0\refint\Vehcile Project.dll
 D:\Education\Internship\Vehcile\obj\Debug\net7.0\Vehcile Project.pdb
 D:\Education\Internship\Vehcile\obj\Debug\net7.0\Vehcile Project.genruntimeconfig.cache
 D:\Education\Internship\Vehcile\obj\Debug\net7.0\ref\Vehcile Project.dll
+D:\Education\Internship\Vehcile\bin\Debug\net7.0\Serilog.dll
+D:\Education\Internship\Vehcile\bin\Debug\net7.0\Serilog.Sinks.File.dll
+D:\Education\Internship\Vehcile\bin\Debug\net7.0\Serilog.Sinks.Console.dll

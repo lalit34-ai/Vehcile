@@ -1,70 +1,76 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using VEHCILE.Models;
 using VEHCILE.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using VEHCILE.Data;
+using System.Linq;
+
+// we implemented separation of concern by refactoring the controller and moving the data access logic to separate repository class.
+//Hence making controller responsible for handling customer inputs, invoking the repository  for data operations and managing the view render.
 
 namespace VEHCILE.Controllers
 {
     [Actions]
     public class BusController : Controller
     {
-        private ApplicationDbContext _database;
-        public BusController(ApplicationDbContext database)
+        private readonly BusRepository _busRepository;
+
+        public BusController(BusRepository busRepository)
         {
-            _database = database;
+            _busRepository = busRepository;
         }
+
         public IActionResult Index()
         {
-            var list2 = _database.Buses.ToList();
-            return View(list2);
+            var buses = _busRepository.GetAllBuses();
+            return View(buses);
         }
+
         public IActionResult Add()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Add(Bus newbus)
         {
-            _database.Buses.Add(newbus);
-            _database.SaveChanges();
+            _busRepository.AddBusEntry(newbus);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
         public IActionResult UpdateBus(string id)
         {
-            var update = _database.Buses.Find(id);
-            _database.SaveChanges();
-            return View(update);
+            var updateBusData = _busRepository.GetBusById(id);
+            if (updateBusData == null)
+            {
+                return NotFound();
+            }
+            return View(updateBusData);
         }
+
         [HttpPost]
-        public IActionResult UpdateBus(Bus updatebus)
+        public IActionResult UpdateBus(Bus updateBus)
         {
-            var update = _database.Buses.Find(updatebus.BusNumber);
-            update.PickUp = updatebus.PickUp;
-            update.DropOff = updatebus.DropOff;
-            update.SeatingCapacity = updatebus.SeatingCapacity;
-            _database.Buses.Update(update);
-            _database.SaveChanges();
-            return RedirectToAction("Index", "Bus");
+            _busRepository.UpdateBus(updateBus);
+            return RedirectToAction("Index");
         }
-        [HttpGet]
+
+        [HttpGet] // the deletebus method is not working check it.
         public IActionResult DeleteBus(string id)
         {
-            var delete = _database.Buses.Find(id);
-            _database.SaveChanges();
-            return View(delete);
+            var deleteBusData = _busRepository.GetBusById(id);
+            if (deleteBusData == null)
+            {
+                return NotFound();
+            }
+            return View(deleteBusData);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteBus(Bus delbusNumber)
+        public IActionResult DeleteBusConfirmed(string id)
         {
-            var delobj = _database.Buses.Find(delbusNumber.BusNumber);
-            _database.Buses.Remove(delobj);
-            _database.SaveChanges();
+            _busRepository.DeleteBus(id);
             TempData["Done"] = "Successfully Deleted";
             return RedirectToAction("Index");
         }

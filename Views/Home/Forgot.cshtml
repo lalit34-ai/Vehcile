@@ -1,23 +1,32 @@
 @model LoginEmployee
 @{
-    ViewData[" Title"] = "Forgot";
+    ViewData["Title"] = "Forgot";
 }
 
-<body background="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/20f02161948347.5a7f57531c2f5.jpg">
-    <form method="post">
-        <div class="form-outline mb-4">
-            <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" />
-            <label class="form-label" for="form2Example1" style="color: white;">EmployeeID</label>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body background="https://as2.ftcdn.net/v2/jpg/04/60/71/01/1000_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg" style="background-repeat:no-repeat;background-size:cover">
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card p-4" style="max-width: 400px; background-color: rgba(255, 255, 255, 0.9);">
+            <form method="post">
+                <div class="form-outline mb-4">
+                    <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" required />
+                    <label class="form-label" for="form2Example1" style="color: black;">EmployeeID</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" required />
+                    <label class="form-label" for="form2Example1" style="color: black;">Last Password</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input asp-for="Password" type="password" id="form2Example2" class="form-control" style="color: orange;" pattern=".{8,}" title="Password must be at least 8 characters" required />
+                    <label class="form-label" for="form2Example2" style="color: black;">New Password</label>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+            </form>
         </div>
-        <div class="form-outline mb-4">
-            <input asp-for="EmployeeID" type="email" id="form2Example1" class="form-control" style="color: orange;" />
-            <label class="form-label" for="form2Example1" style="color: white;">Last Password </label>
-        </div>
-        <div class="form-outline mb-4">
-            <input asp-for="Password" type="Password" id="form2Example2" class="form-control" style=color:orange; />
-            <label class="form-label" for="form2Example2" ` style="color: white;">New Password</label>
-            <br>
-            <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
-    </form>
+    </div>
 </body>
 

@@ -13,22 +13,25 @@ namespace VEHCILE.Controllers
     [Actions]
     public class DriverController : Controller
     {
-        private readonly IData data1;
-        public DriverController(IData _data1)
+        private readonly IDriverRepository driverRepository;
+
+        public DriverController(IDriverRepository driverRepository)
         {
-            data1 = _data1;
+            this.driverRepository = driverRepository;
         }
 
         public IActionResult Index()
         {
-            var list122 = data1.GetAllDrivers();
-            return View(list122);
+            var drivers = driverRepository.GetAllDrivers();
+            return View(drivers);
         }
+
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Add(Driver newdriver) //to add new car
         {
@@ -38,35 +41,25 @@ namespace VEHCILE.Controllers
             }
             else
             {
-            bool inSaved = data1.AddNewDriver(newdriver);
-            ViewBag.inSaved = inSaved;
-            return RedirectToAction("Index");
-        }}
-        // public IActionResult UpdateDriver()
-        // {
-        //     return View();
-        // }
-        // [HttpPost]
-        // public IActionResult UpdateDriver(string id, Driver updatedriver)
-        // {
-        //     Console.WriteLine("Reached");
-        //     bool sq1saved = data1.UpDriver(id, updatedriver);
-        //     ViewBag.inSaved = sq1saved;
-        //     return RedirectToAction("Index");
-        // }
+                bool isSaved = driverRepository.AddNewDriver(newdriver);
+                ViewBag.isSaved = isSaved;
+                return RedirectToAction("Index");
+            }
+        }
 
+       
         public IActionResult DeleteDriver()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult DeleteDriver(string id, Driver deletedriver)
         {
-            bool s11saved = data1.DeDriver(id, deletedriver);
-            ViewBag.inSaved = s11saved;
+            bool isSaved = driverRepository.DeleteDriver(id);
+            ViewBag.inSaved = isSaved;
             return RedirectToAction("Index");
         }
     }
-
 }
 

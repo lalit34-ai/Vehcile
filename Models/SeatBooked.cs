@@ -58,7 +58,6 @@ namespace VEHCILE.Models
             }
         }
 
-
         public static void CarLinking(){
             Dictionary<string,List<string>> carDetails = new Dictionary<string, List<string>>();
             using(SqlConnection connection = new SqlConnection()){

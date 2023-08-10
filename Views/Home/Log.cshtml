@@ -1,65 +1,58 @@
 @model LoginEmployee
 @{
-  ViewData["Title"] = "Login";
-
+    ViewData["Title"] = "Login";
 }
 
+<head runat="server">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
 <body background="https://i0.wp.com/www.techawkng.com/wp-content/uploads/2020/07/Ridesharing.jpg?w=1920&ssl=1"
-  style="background-repeat:no-repeat; background-size: cover">
-  @section Scripts
-    {
-    @{
-      <Partial name="_ValidationScriptsPartial" />
-    }
-  }
+      style="background-repeat:no-repeat; background-size: cover">
+    <div style="padding-left: 85px; padding-top: 50px;">
+        <p style="color:white; font-family:Georgia, serif; padding-left: 80px;">LOGIN</p>
+        <form method="post" id="form2" style="border: black; border-width: 1px; border-style: outset; padding: 10px 10px 10px 10px; width: 222px;">
+            <!-- Mail input -->
+            <div class="form-outline mb-4">
+                @* I am taking the emailid as the employee ID *@
+                <input type="email" id="form2Example2" class="form-control" style="width: 200px" placeholder="ID"
+                       asp-for="EmployeeID" autocomplete="off" required />
+                <span asp-validation-for="EmployeeID" class="text-danger" style="color:white; font-family:Georgia, serif"></span>
+            </div>
 
-  <div style="padding-left:85px;padding-top:50px;">
-    <p style="color:white;font-family:Georgia, serif;padding-left:80px">LOGIN</p>
-    <form method="post" id="form2"
-      style="border:black;border-width:1px; border-style:outset; padding: 10px 10px 10px 10px; width:222px;">
-      <!-- Mail input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="form2Example2" class="form-control" style="width:200px" placeholder="EmployeeID"
-          asp-for="EmployeeID" autocomplete="off" required />
-        <span asp-validation-for="EmployeeID" class="text-danger" style="color:white;font-family:Georgia, serif"></span>
-      </div>
+            <br>
 
-      <br>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <div class="input-group">
+                    <input type="password" id="form2Example3" class="form-control" style="width: 200px" placeholder="Password"
+                           asp-for="Password"
+                           title="At least 8 characters. At least one uppercase letter, one lowercase letter, and one number" required />
+                    <span asp-validation-for="Password" class="text-danger" style="color: white; font-family:Georgia, serif"></span>
+                    <div class="input-group-append">
+                        <div id="show_password" class="btn btn-link">
+                            <span class="fa fa-eye"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+             <script src="~/js/Logjs.js"></script>
+            <!-- Display validation summary -->
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="Password" id="form2Example3" class="form-control" style="width:200px" placeholder="Password"
-          asp-for="Password"
-          title="Atleast 8 characters. Atleast one uppercase letter, one lowercase letter and one number" required />
-        <span asp-validation-for="Password" class="text-danger" style="color:white;font-family:Georgia, serif"></span>
-      </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" style="width: 200px">Login</button>
+        </form>
 
-      <p style="color:white;font-family:Georgia, serif;"><input type="checkbox" onclick="myFunction()"> Show Password
-      </p>
-      <script>
-        function myFunction() {
-          var x = document.getElementById("form2Example3");
-          if (x.type === "Password") { // Javascript
-            x.type = "text";
-          } else {
-            x.type = "Password";
-          }
-        }
-      </script>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4" style="width:200px">Login</button>
-
-    </form>
-    <br>
-    <a style="color:white;font-family:Georgia, serif;padding-left:50px;" href="/Home/Forgot">Forgot Password?</a>
-    <br>
-    <br>
-    <p style="color:white;font-family:Georgia, serif;padding-left:30px">Not a user? <a style="color:white;"
-        asp-controller="Home" asp-action="signup">Register Here</a></p>
-    <br>
-    <p style="text-align:center; width:200px; word-break:keep-all; color:white;font-family:Georgia, serif">
-      @ViewBag.message</p>
-  </div>
+        <br>
+        <a style="color:white; font-family:Georgia, serif; padding-left: 50px;" href="/Home/Forgot">Forgot Password?</a>
+        <br>
+        <br>
+        <p style="color:white; font-family:Georgia, serif; padding-left: 30px">Not a user? <a style="color:white;" asp-controller="Home" asp-action="signup">Register Here</a></p>
+        <br>
+        <p style="text-align:center; width:200px; word-break:keep-all; color:white; font-family:Georgia, serif">
+            @ViewBag.message</p>
+    </div>
 </body>
-

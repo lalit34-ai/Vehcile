@@ -1,0 +1,15 @@
+  .container {
+      align-items: right;
+      padding-right: 20px;
+      align-content: flex-end;
+  }
+
+  #map_canvas {
+      width: 800px;
+      height: 500px;
+      position: absolute;
+      top: 80px;
+      margin-left: 700px;
+
+
+  }

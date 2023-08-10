@@ -44,22 +44,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Education/Internship/Vehcile/Views/Bike/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlrZVxBZGQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Bike/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlrZVxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Bike/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlrZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Bike/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlrZVxVcGRhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Education/Internship/Vehcile/Views/Bus/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,18 +90,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Education/Internship/Vehcile/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Home/Bike1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCaWtlMS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Home/BikeInside.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCaWtlSW5zaWRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Education/Internship/Vehcile/Views/Home/BikeInside2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCaWtlSW5zaWRlMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Education/Internship/Vehcile/Views/Home/Bus1.cshtml]
@@ -236,12 +208,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FbXBsb3llZWxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Education/Internship/Vehcile/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[D:/Education/Internship/Vehcile/Views/Shared/_Routes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Sb3V0ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Education/Internship/Vehcile/Views/UserCar/BikeHistory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckNhclxCaWtlSGlzdG9yeS5jc2h0bWw=
+[D:/Education/Internship/Vehcile/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Education/Internship/Vehcile/Views/UserCar/Index.cshtml]

@@ -1,0 +1,34 @@
+2023-08-10 14:19:08.641 +05:30 [INF] Log action called
+2023-08-10 14:19:08.641 +05:30 [INF] Log action called
+2023-08-10 14:20:03.529 +05:30 [INF] User lalitkumar.ndit@gmail.com attempted to log in
+2023-08-10 14:23:24.892 +05:30 [INF] User logged out
+2023-08-10 14:23:24.904 +05:30 [INF] Log action called
+2023-08-10 14:25:03.890 +05:30 [INF] User logged out
+2023-08-10 14:25:03.905 +05:30 [INF] Log action called
+2023-08-10 14:26:25.447 +05:30 [INF] Log action called
+2023-08-10 14:26:45.978 +05:30 [INF] User lalitkumar.ndit@gmail.com attempted to log in
+2023-08-10 14:26:58.723 +05:30 [INF] User logged out
+2023-08-10 14:26:58.738 +05:30 [INF] Log action called
+2023-08-10 14:27:30.135 +05:30 [INF] Log action called
+2023-08-10 14:27:59.040 +05:30 [INF] User lalitkumar.ndit@gmail.com attempted to log in
+2023-08-10 14:28:11.514 +05:30 [INF] User lalitkumar.ndit@gmail.com attempted to log in
+2023-08-10 14:30:01.088 +05:30 [INF] User logged out
+2023-08-10 14:30:01.100 +05:30 [INF] Log action called
+2023-08-10 14:44:28.203 +05:30 [INF] Log action called
+2023-08-10 14:46:09.368 +05:30 [INF] Log action called
+2023-08-10 17:34:12.655 +05:30 [INF] Log action called
+2023-08-10 17:34:55.190 +05:30 [INF] User lalitkumar.ndit@gmail.com attempted to log in
+2023-08-10 17:44:05.803 +05:30 [INF] User logged out
+2023-08-10 17:44:05.854 +05:30 [INF] Log action called
+2023-08-10 17:46:36.065 +05:30 [INF] User logged out
+2023-08-10 17:46:36.073 +05:30 [INF] Log action called
+2023-08-10 17:46:49.579 +05:30 [INF] Log action called
+2023-08-10 17:46:52.106 +05:30 [INF] Log action called
+2023-08-10 17:48:55.901 +05:30 [INF] Log action called
+2023-08-10 17:51:46.810 +05:30 [INF] Log action called
+2023-08-10 17:52:47.476 +05:30 [INF] User logged out
+2023-08-10 17:52:47.485 +05:30 [INF] Log action called
+2023-08-10 17:54:42.496 +05:30 [INF] Log action called
+2023-08-10 17:55:14.786 +05:30 [INF] Log action called
+2023-08-10 17:55:17.403 +05:30 [INF] Log action called
+2023-08-10 18:17:25.600 +05:30 [INF] Log action called

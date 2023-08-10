@@ -1,0 +1,31 @@
+@model VEHCILE.Models.Bus;
+
+<div class="container">
+    <div class="form-outline mb-4" style="color: White;"><b>Start at </b></label>
+    <br>
+      <select name="Pickup" asp-for="PickUp" style="font-size: 1rem;">
+        @{
+          foreach (var bus in ViewBag.busList)
+          {
+            <option value=@bus.PickUp name="PickUp">@bus.PickUp</option>
+          }
+        }
+      </select>
+    </div>
+    <div class="form-outline mb-4" style="color: White;" style="margin-left:4rem">DropOff</b></label>
+    <br>
+      <select name="DropOff" asp-for="DropOff" style="font-size: 1rem;">
+        @{
+          foreach (var bus in ViewBag.busList)
+          {
+            <option value=@bus.DropOff name="DropOff">@bus.DropOff</option>
+          }
+        }
+      </select>
+    </div>
+    <div class="form-outline mb-4" style="color:White;"><b>Date</b>
+    <br>
+      <input style="margin-left:0rem " type="date" id="DOJ" name="DOJ" min="2023-01-01" max="2023-12-31">
+    </div>
+
+        </div>

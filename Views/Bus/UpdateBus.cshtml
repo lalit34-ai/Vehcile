@@ -1,34 +1,31 @@
 @model VEHCILE.Models.Bus;
 @{
-    ViewData["Title"] = "Edit";
+  ViewData["Title"] = "Edit";
 }
 <div class="text-white" align="center" style="background-color: rgba(40, 39, 39, 0.8);">
-    <h1>Edit Bus Details</h1>
-    <hr/>
-<form method="post">
+  <h1>Edit Bus Details</h1>
+  <hr />
+  <form method="post" asp-action="UpdateBus">
     <div class="form-group">
-    
-    <label class="form-label" asp-for="BusNumber"> BusNumber : 
-      <input size="20" readonly asp-for="BusNumber" class="form-control" />
-    </label>
-  </div>
-   
-  <div class="form-group">
-    
-    <label class="form-label" asp-for="PickUp">PickUp:
-      <input size="20" asp-for="PickUp" class="form-control" />
-    </label>
-  </div>
-  <div class="form-outline mb-4">
-    <label class="form-label" asp-for="SeatingCapacity">Seating Capacity: 
-    <input size="20" asp-for="SeatingCapacity" class="form-control"  />
-          </label>
-  </div>
-   <div class="form-outline mb-4">
-    <label class="form-label" asp-for="DropOff">DropOff: 
-    <input size="20" asp-for="DropOff" class="form-control" />
-          </label>
-  </div>
+      <label class="form-label" asp-for="BusNumber"> BusNumber :
+        <input size="20" readonly asp-for="BusNumber" class="form-control" />
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-label" asp-for="PickUp">PickUp:
+        <input size="20" asp-for="PickUp" class="form-control" />
+      </label>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" asp-for="SeatingCapacity">Seating Capacity:
+        <input size="20" asp-for="SeatingCapacity" class="form-control" />
+      </label>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" asp-for="DropOff">DropOff:
+        <input size="20" asp-for="DropOff" class="form-control" />
+      </label>
+    </div>
 
-  <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Update</button>
-</form>
+    <button type="submit" ali class="btn btn-primary btn-block mb-4 align-center">Update</button>
+  </form>

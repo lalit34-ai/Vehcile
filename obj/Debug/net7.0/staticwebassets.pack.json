@@ -9,12 +9,84 @@
       "PackagePath": "staticwebassets\\Images\\license.jfif"
     },
     {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Buscs.css",
+      "PackagePath": "staticwebassets\\css\\Buscs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Cab1cs.css",
+      "PackagePath": "staticwebassets\\css\\Cab1cs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Createcs.css",
+      "PackagePath": "staticwebassets\\css\\Createcs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Detailscs.css",
+      "PackagePath": "staticwebassets\\css\\Detailscs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Feedbackcs.css",
+      "PackagePath": "staticwebassets\\css\\Feedbackcs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Indexcs.css",
+      "PackagePath": "staticwebassets\\css\\Indexcs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Livecs.css",
+      "PackagePath": "staticwebassets\\css\\Livecs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\Registercs.css",
+      "PackagePath": "staticwebassets\\css\\Registercs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\company.css",
+      "PackagePath": "staticwebassets\\css\\company.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\employeecs.css",
+      "PackagePath": "staticwebassets\\css\\employeecs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\signadmincs.css",
+      "PackagePath": "staticwebassets\\css\\signadmincs.css"
+    },
+    {
       "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\startscs.css",
+      "PackagePath": "staticwebassets\\css\\startscs.css"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\css\\userbookcs.css",
+      "PackagePath": "staticwebassets\\css\\userbookcs.css"
+    },
+    {
       "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\BusJv.js",
+      "PackagePath": "staticwebassets\\js\\BusJv.js"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\Cab1.js",
+      "PackagePath": "staticwebassets\\js\\Cab1.js"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\Indexjs.js",
+      "PackagePath": "staticwebassets\\js\\Indexjs.js"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\Livejs.js",
+      "PackagePath": "staticwebassets\\js\\Livejs.js"
+    },
+    {
+      "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\Logjs.js",
+      "PackagePath": "staticwebassets\\js\\Logjs.js"
     },
     {
       "Id": "D:\\Education\\Internship\\Vehcile\\wwwroot\\js\\site.js",

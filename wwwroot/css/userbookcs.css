@@ -1,0 +1,17 @@
+
+    .boxfunc{
+    width: 1300px;
+    height: 500px;
+    background-color: rgb(235, 226, 226);
+    border-radius: 1em;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 20px 20px 30px black;  
+}
+
+h3{
+    text-align: center;
+}

@@ -1,57 +1,46 @@
 @{
-     ViewBag.Title = "Policies";
-
-
+    ViewBag.Title = "Policies";
 }
+<head>
+     <link ref="stylesheet" href="~\css\company.css">
+</head>
 <h2 style="margin-left: 45%; color:white;">@ViewBag.Title</h2>
-<h1>@TempData["Time"]</h1>
+
 <br>
 
 <body style="background-color:grey;"></body>
-<p
-     style="color: rgb(0, 0, 0); background-color:rgb(204, 191, 167); padding:2rem; border-radius:1rem; box-shadow:0 0 10px 0 black;">
-     Welcome to our website. If you continue to browse and use this website, you are agreeing to
-     comply with and be bound by the following terms and conditions of use, which together with our privacy policy
-     govern
-     Aspire System's relationship with you in relation to this website. If you disagree with any part of these terms and
-     conditions, please do not use our website.
+<div class="policy-container">
+    <p class="policy-content">
+        Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound
+        by the following terms and conditions of use, which together with our privacy policy govern Aspire System's relationship
+        with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use
+        our website.
+    </p>
 
-     The term 'Aspire Systems' or 'us' or 'we' refers to the owner of the website whose registered headquarters is in
-     1/D-1, SIPCOT IT PARK, Siruseri, Chennai - 603 103, Tamil Nadu, India. Our company registration number is 11-116124
-     and place of registration is Chennai. The term 'you' refers to the user or viewer of our websites.
+    <ul class="policy-list">
+        <li>The content of the pages of this website is for your general information and use only.</li>
+        <li>It is subject to change without notice.</li>
+        <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance,
+            completeness, or suitability of the information and materials found or offered on this website for any particular
+            purpose.</li>
+        <li>You acknowledge that such information and materials may contain inaccuracies or errors, and we expressly exclude
+            liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
+        <li>Your use of any information or materials on this website is entirely at your own risk, for which we shall not be
+            liable. It shall be your own responsibility to ensure that any products, services, or information available through
+            this website meet your specific requirements.</li>
+        <li>This website contains material which is owned by or licensed to us. This material includes, but is not limited to,
+            the design, layout, look, appearance, and graphics. Reproduction is prohibited other than in accordance with the
+            copyright notice, which forms part of these terms and conditions.</li>
+        <li>All trade marks reproduced in this website which are not the property of, or licensed to, the operator are
+            acknowledged on the website.</li>
+        <li>Unauthorised use of this website may give rise to a claim for damages and/or be a criminal offence.</li>
+        <li>From time to time this website may also include links to other websites. These links are provided for your
+            convenience to provide further information. They do not signify that we endorse the website(s). We have no
+            responsibility for the content of the linked website(s).</li>
+        <li>Your use of this website and any dispute arising out of such use of the website is subject to the laws of India.</li>
+    </ul>
+</div>
 
-     The use of this website is subject to the following terms of use:<br>
-
-     i) The content of the pages of this website is for your general information and use only. <br>
-
-     ii) It is subject to change without notice.<br>
-
-     iii) Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness,
-     performance,
-     completeness or suitability of the information and materials found or offered on this website for any particular
-     purpose.<br>
-
-     iv) You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude
-     liability for any such inaccuracies or errors to the fullest extent permitted by law.<br>
-
-     v) Your use of any information or materials on this website is entirely at your own risk, for which we shall not be
-     liable. It shall be your own responsibility to ensure that any products, services or information available through
-     this website meet your specific requirements.<br>
-
-     vi) This website contains material which is owned by or licensed to us. This material includes, but is not limited
-     to,
-     the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the
-     copyright notice, which forms part of these terms and conditions.<br>
-
-     vii) All trade marks reproduced in this website which are not the property of, or licensed to, the operator are
-     acknowledged on the website.<br>
-
-     viii)Unauthorised use of this website may give rise to a claim for damages and/or be a criminal offence.<br>
-
-     ix) From time to time this website may also include links to other websites. These links are provided for your
-     convenience to provide further information. They do not signify that we endorse the website(s). We have no
-     responsibility for the content of the linked website(s).<br>
-
-     x) Your use of this website and any dispute arising out of such use of the website is subject to the laws of
-     India.</br>
-</p>
+<div class="time-container">
+    <h1>@TempData["Time"]</h1>
+</div>
